@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Importing company logos
-import productLedAlliance from '../assets/product_led_alliance_logo.jpeg';
-import imagineFoundation from '../assets/imagine_foundation.jpeg';
-import ilaraHealth from '../assets/ilarahealth.jpeg';
-import elephantHealthcareLogo from '../assets/elephant_healthcare_logo.jpeg';
-import alx from '../assets/alxafrica_logo.jpeg';
-import geothermalDevelopment from '../assets/geo.jpeg';
-import kengenKenya from '../assets/kengenkenya_logo.jpeg';
-import kenyaPower from '../assets/kenya_power.jpeg';
-import iplusEastAfrica from '../assets/iplus_east_africa.webp';
+import productLedAlliance from "../assets/product_led_alliance_logo.jpeg";
+import imagineFoundation from "../assets/imagine_foundation.jpeg";
+import ilaraHealth from "../assets/ilarahealth.jpeg";
+import elephantHealthcareLogo from "../assets/elephant_healthcare_logo.jpeg";
+import alx from "../assets/alxafrica_logo.jpeg";
+import geothermalDevelopment from "../assets/geo.jpeg";
+import kengenKenya from "../assets/kengenkenya_logo.jpeg";
+import kenyaPower from "../assets/kenya_power.jpeg";
+import iplusEastAfrica from "../assets/iplus_east_africa.webp";
 
 // Experience data
 const experiences = [
@@ -69,48 +69,12 @@ const elephantHealthcare = {
         "Resolved product issues for 500+ medical practitioners",
         "Contributed to market penetration in 3 new regions"
       ]
-    },
-    {
-      position: "Change Manager",
-      duration: "Jan 2020 - Dec 2020 (1 yr)",
-      achievements: [
-        "Improved user acceptability by 90%",
-        "Conducted training reducing errors by 95%",
-        "Gathered feedback leading to 92% satisfaction"
-      ]
-    },
-    {
-      position: "Project Manager",
-      duration: "Aug 2019 - Dec 2019 (5 mos)",
-      achievements: [
-        "Achieved 100% adoption rates for Elephant system",
-        "Identified improvements boosting satisfaction by 15%",
-        "Tailored training programs reducing errors by 30%"
-      ]
     }
   ]
 };
 
-// Additional experiences
-const moreExperiences = [
-  {
-    company: "ALX",
-    logo: alx,
-    position: "Young Leader",
-    duration: "Oct 2018 - Jan 2020 (1 yr 4 mos)",
-    description: "A leadership program empowering problem-solving and decision-making."
-  },
-  {
-    company: "Iplus East Africa Ltd",
-    logo: iplusEastAfrica,
-    position: "Customer Service Consultant",
-    duration: "Oct 2017 - Sep 2018 (1 yr)",
-    achievements: [
-      "Improved technical customer support",
-      "Maintained computer hardware for performance",
-      "Volunteered for impactful projects"
-    ]
-  },
+// Additional experiences (Collapsible)
+const otherExperiences = [
   {
     company: "Geothermal Development Company",
     logo: geothermalDevelopment,
@@ -147,7 +111,8 @@ const moreExperiences = [
 ];
 
 export default function Experience() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isElephantOpen, setIsElephantOpen] = useState(false);
+  const [isOtherExperienceOpen, setIsOtherExperienceOpen] = useState(false);
 
   return (
     <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow-lg rounded-lg">
@@ -157,7 +122,7 @@ export default function Experience() {
       {experiences.map((exp, idx) => (
         <motion.div key={idx} className="mb-6 p-4 border-l-4 border-blue-500 bg-gray-100 rounded-lg hover:shadow-md transition-shadow">
           <div className="flex items-center gap-4">
-            <img src={exp.logo} alt={exp.company} className="w-12 h-12" />
+            <img src={exp.logo} alt={exp.company} className="w-12 h-12 rounded-full" />
             <div>
               <h3 className="text-lg font-semibold">{exp.position}</h3>
               <p className="text-gray-600">{exp.company}</p>
@@ -174,13 +139,13 @@ export default function Experience() {
 
       {/* Elephant Healthcare (Collapsible) */}
       <motion.div className="mb-6 p-4 border-l-4 border-green-500 bg-gray-100 rounded-lg hover:shadow-md transition-shadow">
-        <div className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-          <img src={elephantHealthcare.logo} alt="Elephant Healthcare" className="w-12 h-12" />
+        <div className="flex items-center gap-4 cursor-pointer" onClick={() => setIsElephantOpen(!isElephantOpen)}>
+          <img src={elephantHealthcare.logo} alt="Elephant Healthcare" className="w-12 h-12 rounded-full" />
           <h3 className="text-lg font-semibold">Elephant Healthcare</h3>
         </div>
         <AnimatePresence>
-          {isOpen && elephantHealthcare.roles.map((role, idx) => (
-            <motion.div key={idx} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
+          {isElephantOpen && elephantHealthcare.roles.map((role, idx) => (
+            <motion.div key={idx} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
               <p className="text-gray-600 mt-2">{role.position} ({role.duration})</p>
               <ul className="list-disc ml-6 text-gray-700">
                 {role.achievements.map((ach, i) => <li key={i}>{ach}</li>)}
@@ -189,8 +154,30 @@ export default function Experience() {
           ))}
         </AnimatePresence>
       </motion.div>
+
+      {/* Other Experience (Collapsible) */}
+      <motion.div className="mb-6 p-4 border-l-4 border-purple-500 bg-gray-100 rounded-lg hover:shadow-md transition-shadow">
+        <div className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOtherExperienceOpen(!isOtherExperienceOpen)}>
+          <h3 className="text-lg font-semibold">More Experience</h3>
+        </div>
+        <AnimatePresence>
+          {isOtherExperienceOpen && otherExperiences.map((exp, idx) => (
+            <motion.div key={idx} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
+              <div className="flex items-center gap-4 mt-4">
+                <img src={exp.logo} alt={exp.company} className="w-12 h-12 rounded-full" />
+                <div>
+                  <h3 className="text-lg font-semibold">{exp.position}</h3>
+                  <p className="text-gray-600">{exp.company}</p>
+                  <p className="text-sm text-gray-500">{exp.duration}</p>
+                </div>
+              </div>
+              <ul className="list-disc ml-6 text-gray-700">
+                {exp.achievements.map((ach, i) => <li key={i}>{ach}</li>)}
+              </ul>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 }
-
-
