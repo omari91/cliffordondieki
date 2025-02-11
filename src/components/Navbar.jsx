@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-scroll"; // Smooth scrolling
+import { Link } from "react-scroll"; // Import for smooth scrolling
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +31,11 @@ const Navbar = () => {
 
         {/* Resume Button - pushed to extreme right */}
         <div className="ml-auto">
-          <a href="/Clifford_Resume.pdf" download className="hidden md:inline-block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+          <a
+            href="/Resume.pdf"
+            download="Clifford_Resume.pdf"
+            className="hidden md:inline-block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          >
             Download Resume
           </a>
         </div>
