@@ -1,5 +1,6 @@
 import React from "react";
 import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { ReactComponent as CliffordLogo } from "../assets/CliffordLogo.svg"; // Import SVG as React component
 
 const Footer = () => {
   return (
@@ -8,8 +9,10 @@ const Footer = () => {
         
         {/* Branding */}
         <div className="text-center md:text-left mb-4 md:mb-0">
-          <h3 className="text-xl font-semibold text-white">Clifford Ondieki</h3>
-          <p className="text-gray-400 text-sm">M.Sc. Engineering Managment Student</p>
+          <a href="/" className="flex items-center justify-center md:justify-start">
+            <CliffordLogo className="h-12 w-auto text-white fill-white" /> 
+          </a>
+          <p className="text-gray-400 text-sm">M.Sc. Engineering Management Student</p>
         </div>
 
         {/* Social Icons */}

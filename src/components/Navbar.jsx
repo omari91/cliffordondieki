@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-scroll"; // Import for smooth scrolling
+import { ReactComponent as CliffordLogo } from "../assets/CliffordLogo.svg"; // Import the SVG as a React component
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +11,9 @@ const Navbar = () => {
         
         {/* Logo - pushed to extreme left */}
         <div className="flex-shrink-0">
-          <a href="/" className="text-2xl font-bold text-gray-800">Clifford</a>
+          <a href="/" className="flex items-center">
+            <CliffordLogo className="h-12 w-auto" />
+          </a>
         </div>
 
         {/* Navigation Links - centered */}
@@ -42,7 +45,13 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden focus:outline-none ml-4">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
