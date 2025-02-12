@@ -7,7 +7,7 @@ const educationData = [
   {
     university: "Arden University",
     logo: ardenLogo,
-    degree: "Master of Science - MS in Engineering/Industrial Management",
+    degree: "Master of Science - Engineering Management",
     year: "2025 - Present",
     activities: [],
   },

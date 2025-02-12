@@ -4,9 +4,9 @@ const skillsData = [
   {
     category: "Product & Business",
     skills: [
-      { name: "Product Management", level: 90 },
+      { name: "Product Operations", level: 90 },
       { name: "Business Development", level: 85 },
-      { name: "Strategic Planning", level: 80 },
+      { name: "Strategic Planning", level: 65 },
       { name: "Change Management", level: 75 },
       { name: "Team Leadership", level: 88 },
     ],

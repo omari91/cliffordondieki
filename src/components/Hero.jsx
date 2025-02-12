@@ -19,7 +19,7 @@ const Hero = () => {
           Hi, I'm <span className="text-blue-500">Clifford Ondieki</span>,
         </h1>
         <p className="text-lg text-gray-600">
-          Senior Digital Health Leader & Product Operations Expert
+          M.Sc. Engineering Management Student
         </p>
 
         {/* Social Media Icons */}
