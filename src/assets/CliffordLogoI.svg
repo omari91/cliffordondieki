@@ -1,0 +1,25 @@
+<!-- CliffordLogo.svg -->
+<svg
+  width="400"
+  height="100"
+  viewBox="0 0 400 100"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- Import cursive font from Google Fonts -->
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+    </style>
+  </defs>
+
+  <!-- Text styled with the imported cursive font -->
+  <text
+    x="20"
+    y="60"
+    font-family="'Great Vibes', cursive"
+    font-size="48"
+    fill="#fff"
+  >
+    Clifford Ondieki
+  </text>
+</svg>

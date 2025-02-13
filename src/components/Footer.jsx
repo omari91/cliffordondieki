@@ -1,6 +1,6 @@
 import React from "react";
 import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
-import { ReactComponent as CliffordLogo } from "../assets/CliffordLogo.svg"; // Import SVG as React component
+import { ReactComponent as CliffordLogo } from "../assets/CliffordLogoI.svg"; 
 
 const Footer = () => {
   return (
