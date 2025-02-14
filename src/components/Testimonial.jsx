@@ -100,7 +100,7 @@ const testimonials = [
     name: "Alisha Eberle",
     role: "Marketing Manager at Pembroke",
     date: "January 5, 2022",
-    text: "hile working with Clifford at Elephant Healthcare, I was impressed by his can-do attitude and friendly demeanor. Clifford is a reliable sales representative, who supported his colleagues to ensure the entire team succeeded. Caring and dynamic, Clifford looked after his clients well and executed his job successfully. He would be an asset to any sales organization, and I’m sure there are many more areas of business Clifford could excel in given the opportunity.",
+    text: "While working with Clifford at Elephant Healthcare, I was impressed by his can-do attitude and friendly demeanor. Clifford is a reliable sales representative, who supported his colleagues to ensure the entire team succeeded. Caring and dynamic, Clifford looked after his clients well and executed his job successfully. He would be an asset to any sales organization, and I’m sure there are many more areas of business Clifford could excel in given the opportunity.",
     avatar: alishaAvatar,
   },
   {

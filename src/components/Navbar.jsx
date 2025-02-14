@@ -18,7 +18,7 @@ const Navbar = () => {
 
         {/* Navigation Links - centered */}
         <ul className="hidden md:flex space-x-6 mx-auto">
-          {[ "About", "Experience", "Education", "Skills", "Blogs & Testimonials",].map((item) => (
+          {["About", "Experience", "Education", "Skills", "Blogs & Testimonials"].map((item) => (
             <li key={item}>
               <Link
                 to={item.toLowerCase()}
@@ -33,11 +33,11 @@ const Navbar = () => {
         </ul>
 
         {/* Resume Button - pushed to extreme right */}
-        <div className="ml-auto">
+        <div className="ml-auto hidden md:inline-block">
           <a
             href="/Resume.pdf"
             download="Clifford_Resume.pdf"
-            className="hidden md:inline-block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
           >
             Download Resume
           </a>
@@ -60,7 +60,7 @@ const Navbar = () => {
         {isOpen && (
           <div className="absolute top-16 left-0 w-full bg-white shadow-md md:hidden">
             <ul className="flex flex-col items-center py-4">
-              {["Home", "About", "Experience", "Education", "Skills", "Blogs & Testimonials", "Contact"].map((item) => (
+              {["About", "Experience", "Education", "Skills", "Blogs & Testimonials",].map((item) => (
                 <li key={item} className="py-2">
                   <Link
                     to={item.toLowerCase()}
@@ -73,6 +73,15 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
+              <li className="py-2">
+                <a
+                  href="/Resume.pdf"
+                  download="Clifford_Resume.pdf"
+                  className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                >
+                  Download Resume
+                </a>
+              </li>
             </ul>
           </div>
         )}
