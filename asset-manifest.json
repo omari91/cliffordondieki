@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/cliffordondieki/static/css/main.10e6c988.css",
-    "main.js": "/cliffordondieki/static/js/main.a2cc1ac9.js",
+    "main.css": "/cliffordondieki/static/css/main.4ff58051.css",
+    "main.js": "/cliffordondieki/static/js/main.5b7ea228.js",
     "static/js/488.07539606.chunk.js": "/cliffordondieki/static/js/488.07539606.chunk.js",
     "static/media/fa-solid-900.ttf": "/cliffordondieki/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
     "static/media/fa-brands-400.ttf": "/cliffordondieki/static/media/fa-brands-400.1815e00441357e01619e.ttf",
@@ -22,12 +22,12 @@
     "index.html": "/cliffordondieki/index.html",
     "static/media/CliffordLogo.svg": "/cliffordondieki/static/media/CliffordLogo.b0e196fa2e8d5a0d18ec3fc52d910283.svg",
     "static/media/CliffordLogoI.svg": "/cliffordondieki/static/media/CliffordLogoI.e6d4e2c832a9c27f5a504d91965506ff.svg",
-    "main.10e6c988.css.map": "/cliffordondieki/static/css/main.10e6c988.css.map",
-    "main.a2cc1ac9.js.map": "/cliffordondieki/static/js/main.a2cc1ac9.js.map",
+    "main.4ff58051.css.map": "/cliffordondieki/static/css/main.4ff58051.css.map",
+    "main.5b7ea228.js.map": "/cliffordondieki/static/js/main.5b7ea228.js.map",
     "488.07539606.chunk.js.map": "/cliffordondieki/static/js/488.07539606.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.10e6c988.css",
-    "static/js/main.a2cc1ac9.js"
+    "static/css/main.4ff58051.css",
+    "static/js/main.5b7ea228.js"
   ]
 }
