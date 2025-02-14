@@ -1,3 +1,4 @@
+
 import { Link } from "react-scroll";
 import profileImage from "../assets/clifford.png";
 
@@ -52,52 +53,9 @@ const Hero = () => {
           Let's Connect
         </Link>
       </div>
-
-      {/* Embedded LinkedIn Posts Section */}
-      <div className="mt-8 w-full max-w-4xl">
-        <h2 className="text-center text-2xl font-semibold text-gray-800 mb-4">Featured LinkedIn Posts</h2>
-        
-        {/* Scrollable Container */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-x-auto px-4">
-          {/* Post 1 */}
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300">
-            <iframe
-              src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7133828823338397696"
-              height="400"
-              width="100%"
-              frameBorder="0"
-              allowFullScreen
-              title="LinkedIn Post 1"
-            ></iframe>
-          </div>
-
-          {/* Post 2 */}
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300">
-            <iframe
-              src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7278027436854824960"
-              height="400"
-              width="100%"
-              frameBorder="0"
-              allowFullScreen
-              title="LinkedIn Post 2"
-            ></iframe>
-          </div>
-
-          {/* Post 3 */}
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300">
-            <iframe
-              src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6729405735668604928"
-              height="400"
-              width="100%"
-              frameBorder="0"
-              allowFullScreen
-              title="LinkedIn Post 3"
-            ></iframe>
-          </div>
-        </div>
-      </div>
     </section>
   );
 };
 
 export default Hero;
+

@@ -18,7 +18,7 @@ const Navbar = () => {
 
         {/* Navigation Links - centered */}
         <ul className="hidden md:flex space-x-6 mx-auto">
-          {["Home", "About", "Experience", "Education", "Skills", "Projects", "Testimonials", "Contact"].map((item) => (
+          {[ "About", "Experience", "Education", "Skills", "Blogs & Testimonials",].map((item) => (
             <li key={item}>
               <Link
                 to={item.toLowerCase()}
@@ -60,7 +60,7 @@ const Navbar = () => {
         {isOpen && (
           <div className="absolute top-16 left-0 w-full bg-white shadow-md md:hidden">
             <ul className="flex flex-col items-center py-4">
-              {["Home", "About", "Experience", "Education", "Skills", "Projects", "Testimonials", "Contact"].map((item) => (
+              {["Home", "About", "Experience", "Education", "Skills", "Blogs & Testimonials", "Contact"].map((item) => (
                 <li key={item} className="py-2">
                   <Link
                     to={item.toLowerCase()}

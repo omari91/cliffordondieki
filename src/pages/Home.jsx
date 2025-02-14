@@ -5,16 +5,15 @@ import Education from "../components/Education";
 import Skills from "../components/Skills";
 import Testimonial from "../components/Testimonial";
 
-
 const Home = () => {
   return (
     <>
       <Hero />
       <About />
-      <Experience /> 
-      <Education/>
-     <Skills/>
-     <Testimonial/>
+      <Experience />
+      <Education />
+      <Skills />
+      <Testimonial />
     </>
   );
 };
