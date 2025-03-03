@@ -11,9 +11,9 @@ const Navbar = () => {
         
         {/* Logo - pushed to extreme left */}
         <div className="flex-shrink-0">
-          <a href="/" className="flex items-center">
+          <Link to="home" smooth={true} duration={500} className="flex items-center cursor-pointer">
             <CliffordLogo className="h-12 w-auto" />
-          </a>
+          </Link>
         </div>
 
         {/* Navigation Links - centered */}
@@ -60,7 +60,7 @@ const Navbar = () => {
         {isOpen && (
           <div className="absolute top-16 left-0 w-full bg-white shadow-md md:hidden">
             <ul className="flex flex-col items-center py-4">
-              {["About", "Experience", "Education", "Skills", "Blogs & Testimonials",].map((item) => (
+              {["About", "Experience", "Education", "Skills", "Blogs & Testimonials"].map((item) => (
                 <li key={item} className="py-2">
                   <Link
                     to={item.toLowerCase()}
