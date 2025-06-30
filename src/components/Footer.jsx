@@ -1,6 +1,7 @@
 import React from "react";
 import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
-import { ReactComponent as CliffordLogo } from "../assets/CliffordLogoI.svg"; 
+import { ReactComponent as CliffordLogo } from "../assets/CliffordLogoI.svg";
+import { socialLinks } from "../constants/navigation";
 
 const Footer = () => {
   return (
@@ -17,9 +18,8 @@ const Footer = () => {
 
         {/* Social Icons */}
         <div className="flex space-x-6">
-          {/* WhatsApp */}
           <a
-            href="https://wa.me/4915755653967"
+            href={socialLinks.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
             className="text-green-400 hover:text-green-500 text-2xl transition duration-300"
@@ -28,9 +28,8 @@ const Footer = () => {
             <FaWhatsapp />
           </a>
 
-          {/* LinkedIn */}
           <a
-            href="https://www.linkedin.com/in/clifford-ondieki"
+            href={socialLinks.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-400 hover:text-blue-500 text-2xl transition duration-300"

@@ -1,34 +1,5 @@
 import { motion } from "framer-motion";
-import ardenLogo from "../assets/arden_university_logo.jpeg";
-import uonLogo from "../assets/uon.jpeg";
-import jkuatLogo from "../assets/jkuat.jpeg";
-
-const educationData = [
-  {
-    university: "Arden University",
-    logo: ardenLogo,
-    degree: "Master of Science - Engineering Management",
-    year: "2025 - Present",
-    activities: [],
-  },
-  {
-    university: "University of Nairobi",
-    logo: uonLogo,
-    degree: "Postgraduate Diploma in Project Planning and Management",
-    year: "2018 - 2019",
-    activities: ["Grade: Credit"],
-  },
-  {
-    university: "Jomo Kenyatta University of Agriculture and Technology",
-    logo: jkuatLogo,
-    degree: "BSc in Electrical and Electronic Engineering",
-    year: "2011 - 2016",
-    activities: [
-      "Council of Engineering Students",
-      "Pioneer formation of Council of Engineering Students",
-    ],
-  },
-];
+import { educationData } from "../data/educationData";
 
 const Education = () => {
   return (
@@ -50,6 +21,9 @@ const Education = () => {
             <motion.div
               key={index}
               whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="flex-shrink-0 w-80 bg-white rounded-lg shadow-md p-6 border border-gray-200"
             >
               {/* University Logo */}

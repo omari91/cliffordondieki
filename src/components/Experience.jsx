@@ -1,201 +1,158 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { experiences, elephantHealthcare, otherExperiences } from "../data/experienceData";
 
-// Importing company logos
-import productLedAlliance from "../assets/product_led_alliance_logo.jpeg";
-import imagineFoundation from "../assets/imagine_foundation.jpeg";
-import ilaraHealth from "../assets/ilarahealth.jpeg";
-import elephantHealthcareLogo from "../assets/elephant_healthcare_logo.jpeg";
-import alx from "../assets/alxafrica_logo.jpeg";
-import geothermalDevelopment from "../assets/geo.jpeg";
-import kengenKenya from "../assets/kengenkenya_logo.jpeg";
-import kenyaPower from "../assets/kenya_power.jpeg";
-import iplusEastAfrica from "../assets/iplus_east_africa.webp";
+const ExperienceCard = ({ experience, index }) => (
+  <motion.div 
+    key={index} 
+    className="mb-6 p-4 border-l-4 border-blue-500 bg-gray-100 rounded-lg hover:shadow-md transition-shadow"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
+  >
+    <div className="flex items-center gap-4">
+      <img 
+        src={experience.logo} 
+        alt={experience.company} 
+        className="w-12 h-12 rounded-full object-cover" 
+      />
+      <div>
+        <h3 className="text-lg font-semibold">{experience.position}</h3>
+        <p className="text-gray-600">{experience.company}</p>
+        <p className="text-sm text-gray-500">{experience.duration}</p>
+        {experience.location && (
+          <p className="text-sm text-gray-500">{experience.location}</p>
+        )}
+      </div>
+    </div>
+    {experience.description && (
+      <p className="mt-2 text-gray-700">{experience.description}</p>
+    )}
+    {experience.achievements && (
+      <ul className="mt-2 list-disc ml-6 text-gray-700">
+        {experience.achievements.map((achievement, i) => (
+          <li key={i}>{achievement}</li>
+        ))}
+      </ul>
+    )}
+  </motion.div>
+);
 
-// Experience data
-const experiences = [
-  {
-    company: "Product-Led Alliance",
-    logo: productLedAlliance,
-    position: "Member",
-    duration: "Apr 2024 - Present (11 mon)",
-    description: "Driving company-wide alignment around product-led growth."
-  },
-  {
-    company: "Imagine Foundation e.V.",
-    logo: imagineFoundation,
-    position: "Fellow",
-    duration: "Oct 2023 - Present (1 yr 5 mon)",
-    location: "Berlin, Germany",
-    achievements: [
-      "Completed a challenging 4-week European Tech digital boot camp",
-      "Attended a coaching session",
-      "Received a 360 feedback including my resume, LinkedIn, and technical skills",
-      "Graduated in the top 20% of my class"
-    ]
-  },
-  {
-    company: "Ilara Health",
-    logo: ilaraHealth,
-    position: "Senior Product Operations Lead",
-    duration: "Jan 2022 - Apr 2024 (2 yrs 4 mon)",
-    location: "Nairobi County, Kenya",
-    achievements: [
-      "Revamped team processes, increasing productivity by 33%",
-      "Reduced product delivery time by 50% using Agile methodologies",
-      "Managed a 10-person team, boosting satisfaction & retention to over 70%"
-    ]
-  }
-];
-
-const elephantHealthcare = {
-  company: "Elephant Healthcare",
-  logo: elephantHealthcareLogo,
-  roles: [
-    {
-      position: "Business Development Coordinator",
-      duration: "Jun 2021 - Dec 2021 (7 mon)",
-      achievements: [
-        "Increased new business acquisition by 40%",
-        "Boosted user retention rates by 50%",
-        "Led cross-functional data analysis for strategic planning"
-      ]
-    },
-    {
-      position: "Customer Success Coordinator",
-      duration: "Jan 2021 - Jun 2021 (6 mon)",
-      achievements: [
-        "Reduced issue resolution time by 40%",
-        "Resolved product issues for 500+ medical practitioners",
-        "Contributed to market penetration in 3 new regions"
-      ]
-    },
-    {
-      position: "Change Manager",
-      duration: "Jan 2020 - Jun 2020 (12 mon)",
-      achievements: [
-        "Acted as a bridge between the IT department and end-users, ensuring a smooth software transition with a 90% increase in user acceptance.",
-        "Led training sessions to teach system functionalities, reducing user errors by 95% in the first month.",
-        "Collaborated with cross-functional teams to gather feedback and drive improvements, achieving a 92% user satisfaction rate."
-      ]
-    },
-    {
-      position: "Project Manager",
-      duration: "Aug 2019 - Ju 2021 (5 mon)",
-      achievements: [
-        "Conducted detailed training sessions on the Elephant system for healthcare staff, achieving 100% adoption and a 20% increase in efficiency.",
-         "Analyzed feedback and data to identify challenges and opportunities, resulting in a 15% boost in user satisfaction.",
-         "Developed tailored training programs for specific roles, ensuring a smooth transition to the Elephant system and reducing errors by 30%."
-      ]
-    },
-  ]
-};
-
-// Additional experiences (Collapsible)
-const otherExperiences = [
-  {
-    company: "Geothermal Development Company",
-    logo: geothermalDevelopment,
-    position: "Engineering Intern",
-    duration: "Feb 2015 - May 2015 (4 mos)",
-    achievements: [
-      "Reduced equipment downtime for efficiency",
-      "Optimized oil usage, preventing spills",
-      "Ensured stock for fast equipment replacements"
-    ]
-  },
-  {
-    company: "KenGen Kenya",
-    logo: kengenKenya,
-    position: "Engineering Intern",
-    duration: "Jan 2014 - Apr 2014 (4 mos)",
-    achievements: [
-      "Extended motor lifespan, reducing costs",
-      "Tested transformers for optimal cooling",
-      "Implemented safety protocols preventing hazards"
-    ]
-  },
-  {
-    company: "Kenya Power",
-    logo: kenyaPower,
-    position: "Engineering Intern",
-    duration: "Jan 2013 - Mar 2013 (3 mos)",
-    achievements: [
-      "Constructed overhead power lines for better coverage",
-      "Cleared feeder obstructions preventing outages",
-      "Installed and repaired electrical switches"
-    ]
-  }
-];
+const CollapsibleSection = ({ title, isOpen, onToggle, children, borderColor = "border-green-500" }) => (
+  <motion.div className={`mb-6 p-4 border-l-4 ${borderColor} bg-gray-100 rounded-lg hover:shadow-md transition-shadow`}>
+    <div 
+      className="flex items-center gap-4 cursor-pointer" 
+      onClick={onToggle}
+    >
+      <h3 className="text-lg font-semibold">{title}</h3>
+      <motion.div
+        animate={{ rotate: isOpen ? 180 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="ml-auto"
+      >
+        ▼
+      </motion.div>
+    </div>
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
+          className="overflow-hidden"
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </motion.div>
+);
 
 export default function Experience() {
   const [isElephantOpen, setIsElephantOpen] = useState(false);
   const [isOtherExperienceOpen, setIsOtherExperienceOpen] = useState(false);
 
   return (
-    <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-3xl font-bold text-center mb-8">Experience</h2>
+    <section id="experience" className="py-16 bg-white">
+      <div className="max-w-4xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-center mb-8">Experience</h2>
 
-      {/* Individual Experiences */}
-      {experiences.map((exp, idx) => (
-        <motion.div key={idx} className="mb-6 p-4 border-l-4 border-blue-500 bg-gray-100 rounded-lg hover:shadow-md transition-shadow">
-          <div className="flex items-center gap-4">
-            <img src={exp.logo} alt={exp.company} className="w-12 h-12 rounded-full" />
-            <div>
-              <h3 className="text-lg font-semibold">{exp.position}</h3>
-              <p className="text-gray-600">{exp.company}</p>
-              <p className="text-sm text-gray-500">{exp.duration}</p>
+        {/* Individual Experiences */}
+        {experiences.map((exp, idx) => (
+          <ExperienceCard key={idx} experience={exp} index={idx} />
+        ))}
+
+        {/* Elephant Healthcare (Collapsible) */}
+        <CollapsibleSection
+          title={
+            <div className="flex items-center gap-4">
+              <img 
+                src={elephantHealthcare.logo} 
+                alt="Elephant Healthcare" 
+                className="w-12 h-12 rounded-full object-cover" 
+              />
+              <span>Elephant Healthcare</span>
             </div>
-          </div>
-          {exp.achievements && (
-            <ul className="mt-2 list-disc ml-6 text-gray-700">
-              {exp.achievements.map((ach, i) => <li key={i}>{ach}</li>)}
-            </ul>
-          )}
-        </motion.div>
-      ))}
-
-      {/* Elephant Healthcare (Collapsible) */}
-      <motion.div className="mb-6 p-4 border-l-4 border-green-500 bg-gray-100 rounded-lg hover:shadow-md transition-shadow">
-        <div className="flex items-center gap-4 cursor-pointer" onClick={() => setIsElephantOpen(!isElephantOpen)}>
-          <img src={elephantHealthcare.logo} alt="Elephant Healthcare" className="w-12 h-12 rounded-full" />
-          <h3 className="text-lg font-semibold">Elephant Healthcare</h3>
-        </div>
-        <AnimatePresence>
-          {isElephantOpen && elephantHealthcare.roles.map((role, idx) => (
-            <motion.div key={idx} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
-              <p className="text-gray-600 mt-2">{role.position} ({role.duration})</p>
+          }
+          isOpen={isElephantOpen}
+          onToggle={() => setIsElephantOpen(!isElephantOpen)}
+        >
+          {elephantHealthcare.roles.map((role, idx) => (
+            <motion.div 
+              key={idx}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3, delay: idx * 0.1 }}
+              className="mt-4 p-3 bg-white rounded-md"
+            >
+              <p className="text-gray-600 font-medium">{role.position}</p>
+              <p className="text-sm text-gray-500 mb-2">{role.duration}</p>
               <ul className="list-disc ml-6 text-gray-700">
-                {role.achievements.map((ach, i) => <li key={i}>{ach}</li>)}
+                {role.achievements.map((achievement, i) => (
+                  <li key={i}>{achievement}</li>
+                ))}
               </ul>
             </motion.div>
           ))}
-        </AnimatePresence>
-      </motion.div>
+        </CollapsibleSection>
 
-      {/* Other Experience (Collapsible) */}
-      <motion.div className="mb-6 p-4 border-l-4 border-purple-500 bg-gray-100 rounded-lg hover:shadow-md transition-shadow">
-        <div className="flex items-center gap-4 cursor-pointer" onClick={() => setIsOtherExperienceOpen(!isOtherExperienceOpen)}>
-          <h3 className="text-lg font-semibold">More Experience</h3>
-        </div>
-        <AnimatePresence>
-          {isOtherExperienceOpen && otherExperiences.map((exp, idx) => (
-            <motion.div key={idx} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
-              <div className="flex items-center gap-4 mt-4">
-                <img src={exp.logo} alt={exp.company} className="w-12 h-12 rounded-full" />
+        {/* Other Experience (Collapsible) */}
+        <CollapsibleSection
+          title="More Experience"
+          isOpen={isOtherExperienceOpen}
+          onToggle={() => setIsOtherExperienceOpen(!isOtherExperienceOpen)}
+          borderColor="border-purple-500"
+        >
+          {otherExperiences.map((exp, idx) => (
+            <motion.div 
+              key={idx}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3, delay: idx * 0.1 }}
+              className="mt-4 p-3 bg-white rounded-md"
+            >
+              <div className="flex items-center gap-4 mb-2">
+                <img 
+                  src={exp.logo} 
+                  alt={exp.company} 
+                  className="w-10 h-10 rounded-full object-cover" 
+                />
                 <div>
-                  <h3 className="text-lg font-semibold">{exp.position}</h3>
-                  <p className="text-gray-600">{exp.company}</p>
-                  <p className="text-sm text-gray-500">{exp.duration}</p>
+                  <h4 className="font-semibold">{exp.position}</h4>
+                  <p className="text-gray-600 text-sm">{exp.company}</p>
+                  <p className="text-xs text-gray-500">{exp.duration}</p>
                 </div>
               </div>
               <ul className="list-disc ml-6 text-gray-700">
-                {exp.achievements.map((ach, i) => <li key={i}>{ach}</li>)}
+                {exp.achievements.map((achievement, i) => (
+                  <li key={i}>{achievement}</li>
+                ))}
               </ul>
             </motion.div>
           ))}
-        </AnimatePresence>
-      </motion.div>
-    </div>
+        </CollapsibleSection>
+      </div>
+    </section>
   );
 }

@@ -1,6 +1,7 @@
-
 import { Link } from "react-scroll";
+import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import profileImage from "../assets/clifford.png";
+import { socialLinks } from "../constants/navigation";
 
 const Hero = () => {
   return (
@@ -26,29 +27,31 @@ const Hero = () => {
         {/* Social Media Icons */}
         <div className="mt-4 flex justify-center space-x-4">
           <a
-            href="https://linkedin.com/in/clifford-ondieki"
+            href={socialLinks.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 border-2 border-blue-500 rounded-full p-2 transition duration-300 hover:bg-blue-500 hover:text-white"
+            aria-label="LinkedIn Profile"
           >
-            <i className="fab fa-linkedin"></i>
+            <FaLinkedin size={20} />
           </a>
           <a
-            href="https://wa.me/4915755653967"
+            href={socialLinks.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
             className="text-green-500 border-2 border-green-500 rounded-full p-2 transition duration-300 hover:bg-green-500 hover:text-white"
+            aria-label="WhatsApp Contact"
           >
-            <i className="fab fa-whatsapp"></i>
+            <FaWhatsapp size={20} />
           </a>
         </div>
 
         {/* CTA Button */}
         <Link
-          to="contact"
+          to="testimonials"
           smooth={true}
           duration={500}
-          className="mt-6 inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 cursor-pointer"
+          className="mt-6 inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 cursor-pointer transition-colors duration-200"
         >
           Let's Connect
         </Link>
@@ -58,4 +61,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
