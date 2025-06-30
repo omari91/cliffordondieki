@@ -1,13 +1,26 @@
 import { useState } from "react";
-import { Link } from "react-scroll";
+import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as CliffordLogo } from "../assets/CliffordLogo.svg";
-import { navigationItems } from "../constants/navigation";
+
+const navigationItems = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Experience", path: "/experience" },
+  { name: "Education", path: "/education" },
+  { name: "Skills", path: "/skills" },
+  { name: "Blogs & Testimonials", path: "/blogs-testimonials" }
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const handleNavClick = () => {
     setIsOpen(false);
+  };
+
+  const isActive = (path) => {
+    return location.pathname === path;
   };
 
   return (
@@ -16,7 +29,7 @@ const Navbar = () => {
         
         {/* Logo */}
         <div className="flex-shrink-0">
-          <Link to="home" smooth={true} duration={500} className="flex items-center cursor-pointer">
+          <Link to="/" className="flex items-center">
             <CliffordLogo className="h-12 w-auto" />
           </Link>
         </div>
@@ -24,12 +37,14 @@ const Navbar = () => {
         {/* Navigation Links - Desktop */}
         <ul className="hidden md:flex space-x-6 mx-auto">
           {navigationItems.map((item) => (
-            <li key={item.id}>
+            <li key={item.path}>
               <Link
-                to={item.id}
-                smooth={true}
-                duration={500}
-                className="cursor-pointer hover:text-blue-500 transition-colors duration-200"
+                to={item.path}
+                className={`transition-colors duration-200 px-3 py-2 rounded-md ${
+                  isActive(item.path)
+                    ? "text-blue-500 bg-blue-50 font-semibold"
+                    : "hover:text-blue-500 hover:bg-gray-50"
+                }`}
               >
                 {item.name}
               </Link>
@@ -75,13 +90,15 @@ const Navbar = () => {
           <div className="absolute top-16 left-0 w-full bg-white shadow-md md:hidden">
             <ul className="flex flex-col items-center py-4">
               {navigationItems.map((item) => (
-                <li key={item.id} className="py-2">
+                <li key={item.path} className="py-2">
                   <Link
-                    to={item.id}
-                    smooth={true}
-                    duration={500}
+                    to={item.path}
                     onClick={handleNavClick}
-                    className="cursor-pointer hover:text-blue-500 transition-colors duration-200"
+                    className={`transition-colors duration-200 px-3 py-2 rounded-md ${
+                      isActive(item.path)
+                        ? "text-blue-500 bg-blue-50 font-semibold"
+                        : "hover:text-blue-500"
+                    }`}
                   >
                     {item.name}
                   </Link>
